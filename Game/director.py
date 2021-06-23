@@ -3,7 +3,6 @@ import arcade
 from game import constants
 from game.actor import Actor
 from game.point import Point
-from game.block import Block
 
 
 class Director(arcade.Window):
@@ -29,8 +28,6 @@ class Director(arcade.Window):
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
-        block = Block()
-        
 
     def on_update(self, delta_time):
         self._cue_action("update")
