@@ -8,7 +8,7 @@ from game.handle_collisions_action import HandleCollisionsAction
 from game.move_actors_action import MoveActorsAction
 from game.arcade_input_service import ArcadeInputService
 from game.arcade_output_service import ArcadeOutputService
-
+from game.block import Block
 
 
 
@@ -18,7 +18,8 @@ def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
-
+    block = Block()
+    cast ["blocks"] = [block]
     
 
     

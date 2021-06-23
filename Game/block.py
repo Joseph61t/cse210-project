@@ -1,10 +1,12 @@
-from arcade.draw_commands import draw_lrtb_rectangle_filled
+import arcade
 from game.point import Point
 from game import constants
-
+from game.actor import Actor
 import arcade
 
-class Block(arcade.draw_commands):
+class Block(Actor):
     def __init__(self):
         super().__init__()
-        draw_lrtb_rectangle_filled(100, 200, 400, 200, arcade.Color.Blue)
+        
+    def draw(self):
+        arcade.draw_lrtb_rectangle_filled(100, 200, 400, 200, arcade.color.BLUE)
