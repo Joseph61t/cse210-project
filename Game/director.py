@@ -3,9 +3,10 @@ import arcade
 from game import constants
 from game.actor import Actor
 from game.point import Point
+from game.block import Block
 
 
-class Director(arcade.Window, arcade.draw_commands):
+class Director(arcade.Window):
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
     
@@ -28,7 +29,8 @@ class Director(arcade.Window, arcade.draw_commands):
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
-        draw_lrtb_rectangle_filled(100, 200, 400, 200, arcade.Color.Blue)
+        block = Block()
+        
 
     def on_update(self, delta_time):
         self._cue_action("update")
