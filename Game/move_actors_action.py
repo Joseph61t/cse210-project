@@ -1,8 +1,9 @@
 from game import constants
 from game.action import Action
 from game.point import Point
+import arcade
 
-class MoveActorsAction(Action):
+class MoveActorsAction(Action, arcade.Sprite):
     """A code template for moving actors. The responsibility of this class of
     objects is move any actor that has a velocity more than zero.
     
@@ -20,9 +21,11 @@ class MoveActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         for group in cast.values():
-            for actor in group:
-                if not actor.get_velocity().is_zero():
-                    self._move_actor(actor)
+            for block in group:
+                block.update()
+                
+
+
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 
