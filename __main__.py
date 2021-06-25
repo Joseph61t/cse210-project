@@ -18,7 +18,11 @@ def main():
 
     # create the cast {key: tag, value: list}
     cast = {}
+    start = (250, 550)
     block = Block()
+    block._set_scale(.07)
+    block._set_position(start)
+    block._set_change_y(-1)
     cast ["blocks"] = [block]
     
 

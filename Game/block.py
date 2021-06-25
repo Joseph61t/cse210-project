@@ -4,9 +4,12 @@ from game import constants
 from game.actor import Actor
 import arcade
 
-class Block(Actor, arcade.Sprite):
+class Block(arcade.Sprite):
     def __init__(self):
-        super().__init__()
+        super().__init__("game/Blue-block-only.png")
+        
+        
+        
         
     
         
