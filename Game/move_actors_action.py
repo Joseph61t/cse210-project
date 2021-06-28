@@ -43,9 +43,9 @@ class MoveActorsAction(Action, arcade.Sprite):
         x_vel = velocity.get_x()
         y_vel = velocity.get_y()
 
-        if actor.get_description() == "paddle":
+        if actor.get_description() == "block":
             x_vel *= 3
-            if actor.get_position().get_x() >= constants.MAX_X - 11 and actor.get_velocity().get_x() > 0:    #paddle width is 11 
+            if actor.get_position().get_x() >= constants.MAX_X - 100 and actor.get_velocity().get_x() > 0:    #block width is 11 
 
                 x_vel = 0
 
