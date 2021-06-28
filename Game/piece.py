@@ -3,6 +3,7 @@ import random
 class Piece:
     def __init__(self) -> None:
         self.piece = []
+        self.rotation = 0
 
     def set_piece(self):
         pieces = {
@@ -17,4 +18,16 @@ class Piece:
         pieceList = list(pieces.items())
         self.piece = random.choice(pieceList)
 
-    
+    def set_rotation(self, key):
+        if key == "#":
+            if self.rotation < 4:
+               self.rotation += 1
+            else:
+                self.rotation = 0
+        elif key == "#":
+            if self.rotation > 0:
+                self.rotation -= 1
+            else:
+                self.rotation = 4
+        else:
+            pass
