@@ -39,9 +39,9 @@ class ArcadeInputService:
             x = 1
 
         if arcade.key.UP in self._keys:
-            y = 1
+            y = -100
         elif arcade.key.DOWN in self._keys:
-            y = -1
+            y = -2
 
         velocity = (x, y)
         return velocity
