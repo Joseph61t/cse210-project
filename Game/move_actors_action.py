@@ -43,16 +43,6 @@ class MoveActorsAction(Action, arcade.Sprite):
         x_vel = velocity.get_x()
         y_vel = velocity.get_y()
 
-        if actor.get_description() == "paddle":
-            x_vel *= 3
-            if actor.get_position().get_x() >= constants.MAX_X - 20 and actor.get_velocity().get_x() > 0:    #paddle width is 11 
-
-                x_vel = 0
-
-            elif actor.get_position().get_x() <= 0 and actor.get_velocity().get_x() < 0:
-
-               x_vel = 0
-
         x_new = (x_pos + x_vel )
         y_new = (y_pos + y_vel ) 
         position = Point(x_new, y_new)
