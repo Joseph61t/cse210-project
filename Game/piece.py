@@ -173,8 +173,8 @@ class Piece:
             else:
                   pass
         
-piece = Piece()
-#print(piece.piece)
+# piece = Piece()
+# print(piece.piece)
 # piece.set_rotation('@')
 # print(piece.piece[piece.rotation])
 # piece.set_rotation('#')
