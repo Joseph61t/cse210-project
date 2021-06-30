@@ -24,26 +24,29 @@ class ArcadeInputService:
     def remove_key(self, key, modifiers):
         self._keys.remove(key)
 
-    def get_direction(self):
+    def get_direction(self, block):
         """Gets the selected direction for the given player.
 
         Returns:
             Point: The selected direction.
         """
         x = 0
-        y = 0
+        y = -1
+        position = block._get_position()
 
-        if arcade.key.LEFT in self._keys:
-            x = -1
-        elif arcade.key.RIGHT in self._keys:
-            x = 1
+        if position[1] > 20:
+            if arcade.key.LEFT in self._keys:
+                x = -3
+            elif arcade.key.RIGHT in self._keys:
+                x = 3
+            if arcade.key.DOWN in self._keys: # speeds up the block
+                y = -4
+            elif arcade.key.UP in self._keys: # moves the block to the bottom of the screen
+                position[1] = 20
+                block._set_position(position)
+            
 
-        if arcade.key.UP in self._keys:
-            y = 1
-        elif arcade.key.DOWN in self._keys:
-            y = -1
-
-        velocity = (x, y)
-        return velocity
+            velocity = (x, y)
+            return velocity
             
 

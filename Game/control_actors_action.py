@@ -27,7 +27,9 @@ class ControlActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        direction = self._input_service.get_direction()
         block = cast["blocks"][0] # there's only one in the cast
+        direction = self._input_service.get_direction(block)
         block._set_change_x(direction[0])
+        block._set_change_y(direction[1])
+        
 
