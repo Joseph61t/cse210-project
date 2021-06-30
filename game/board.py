@@ -10,13 +10,18 @@ class Board():# create a large grid as the board
         for i in range(0,10):
             for j in range(0,20):
                  #size of block is 40px wide and starting spot is at 70 (50px border, 20px radius)
-                board.append(Tile(70+(i*40),70+(j*40)))
+                board.append(Tile(100+(i*35),100+(j*35)))
         return board
-    def draw_board(self):
+    def draw(self):
         for tile in self.coord_plane:
             if tile.block_type == 0:
                 block = Block()
+                block._set_scale(.07)
+                position =  (tile.x, tile.y)
+                block._set_position(position)
                 block.draw()
+    def update(self):
+        pass
 
 # test = Board()
 # print(test.coord_plane[199].x)

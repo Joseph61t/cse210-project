@@ -10,6 +10,7 @@ from game.arcade_input_service import ArcadeInputService
 from game.arcade_output_service import ArcadeOutputService
 from game.block import Block
 from game.piece import Piece
+from game.board import Board
 
 
 import arcade
@@ -24,6 +25,8 @@ def main():
     block._set_scale(.07)
     block._set_position(start)
     block._set_change_y(-1)
+    board = Board()
+    cast ["board"] = [board]
     cast ["blocks"] = [block]
     
 
