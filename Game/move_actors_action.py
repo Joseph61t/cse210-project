@@ -42,14 +42,15 @@ class MoveActorsAction(Action, arcade.Sprite):
         y_pos = position.get_y()
         x_vel = velocity.get_x()
         y_vel = velocity.get_y()
+        block = cast['blocks'][0]
 
-        if actor.get_description() == "block":
+        if block.get_description() == "blocks":
             x_vel *= 3
-            if actor.get_position().get_x() >= constants.MAX_X - 100 and actor.get_velocity().get_x() > 0:    #block width is 11 
+            if x_pos >= constants.MAX_X - 100 and x_vel > 0:    #block width is 11 
 
                 x_vel = 0
 
-            elif actor.get_position().get_x() <= 0 and actor.get_velocity().get_x() < 0:
+            elif x_pos <= 0 and x_vel < 0:
 
                x_vel = 0
 
