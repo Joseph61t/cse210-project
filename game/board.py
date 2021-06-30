@@ -1,4 +1,5 @@
-from tile import Tile
+from game.tile import Tile
+from game.block import Block
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -11,6 +12,11 @@ class Board():# create a large grid as the board
                  #size of block is 40px wide and starting spot is at 70 (50px border, 20px radius)
                 board.append(Tile(70+(i*40),70+(j*40)))
         return board
+    def draw_board(self):
+        for tile in self.coord_plane:
+            if tile.block_type != 0:
+                block = Block()
+                block.draw()
 
 # test = Board()
 # print(test.coord_plane[199].x)
