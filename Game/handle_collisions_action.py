@@ -24,6 +24,10 @@ class HandleCollisionsAction(Action):
         if position[1] < 30:
             block._set_change_x(0)
             block._set_change_y(0)
+        if position[0] <= 21:
+            block._set_change_x(0)
+        elif position[0] >= 479:
+            block._set_change_x(0)
             
         # for block in blocks:
         #     if ball.get_position().get_y() - 1 == brick.get_position().get_y() and ball.get_position().get_x() == brick.get_position().get_x():
