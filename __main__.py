@@ -9,7 +9,7 @@ from game.move_actors_action import MoveActorsAction
 from game.arcade_input_service import ArcadeInputService
 from game.arcade_output_service import ArcadeOutputService
 from game.block import Block
-
+from game.piece import Piece
 
 
 import arcade
@@ -20,6 +20,7 @@ def main():
     cast = {}
     start = (250, 550)
     block = Block()
+    piece = Piece()
     block._set_scale(.07)
     block._set_position(start)
     block._set_change_y(-1)
