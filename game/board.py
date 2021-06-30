@@ -14,7 +14,7 @@ class Board():# create a large grid as the board
         return board
     def draw_board(self):
         for tile in self.coord_plane:
-            if tile.block_type != 0:
+            if tile.block_type == 0:
                 block = Block()
                 block.draw()
 
