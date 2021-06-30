@@ -182,16 +182,9 @@ class Piece:
         else:
             pass
         
-        if self.rotation == 1:
-            self.piece[1] = rotation1[self.piece[0]]
-        elif self.rotation == 2:
-            self.piece[1] = rotation2[self.piece[0]]
-        elif self.rotation == 3:
-            self.piece[1] = rotation3[self.piece[0]]
-        else:
-            self.piece[1] = rotation4[self.piece[0]]
-
 piece = Piece()
-print(piece.piece)
+print(piece.piece[piece.rotation])
 piece.set_rotation('@')
-print(piece.piece)
+print(piece.piece[piece.rotation])
+piece.set_rotation('#')
+print(piece.piece[piece.rotation])
