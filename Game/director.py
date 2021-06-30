@@ -3,6 +3,7 @@ import arcade
 from game import constants
 from game.actor import Actor
 from game.point import Point
+from game.board import Board
 
 
 class Director(arcade.Window):
