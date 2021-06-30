@@ -1,6 +1,6 @@
 import random
 
-class Piece:
+class Piece():
       def __init__(self) -> None:
             self.piece = {}
             self.rotation = 0
@@ -153,11 +153,10 @@ class Piece:
                   0, 0, 0, 0, 
                   0, 0, 0, 0]]
                   ]
-            self.set_piece()      
+            self.set_piece()
+            self.status = 1 
       def set_piece(self):
             self.piece = random.choice(self.pieces)
-
-
 
       def set_rotation(self, key):
             if key == "#":
@@ -172,7 +171,8 @@ class Piece:
                         self.rotation = 3
             else:
                   pass
-        
+      def get_piece(self):
+            return self.piece[self.rotation]
 # piece = Piece()
 # print(piece.piece)
 # piece.set_rotation('@')
