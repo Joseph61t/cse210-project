@@ -159,12 +159,12 @@ class Piece():
             self.piece = random.choice(self.pieces)
 
       def set_rotation(self, key):
-            if key == "#":
+            if key == "D":
                   if self.rotation < 3:
                         self.rotation += 1
                   else:
                         self.rotation = 0
-            elif key == "@":
+            elif key == "A":
                   if self.rotation > 0:
                         self.rotation -= 1
                   else:
