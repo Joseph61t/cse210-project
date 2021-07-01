@@ -1,3 +1,4 @@
+from math import trunc
 from game.director import Director
 import random
 from game import constants
@@ -10,7 +11,9 @@ from game.arcade_input_service import ArcadeInputService
 from game.arcade_output_service import ArcadeOutputService
 from game.block import Block
 from game.piece import Piece
+
 from game.board import Board
+import time
 
 
 import arcade
@@ -20,6 +23,8 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
     start = (250, 550)
+
+    
     block = Block()
     piece = Piece()
     block._set_scale(.07)
@@ -28,6 +33,7 @@ def main():
     board = Board()
     cast ["board"] = [board]
     cast ["blocks"] = [block]
+        
     
 
     
