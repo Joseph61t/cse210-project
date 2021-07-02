@@ -155,8 +155,11 @@ class Piece():
                   ]
             self.set_piece()
             self.status = 1 
+
+
       def set_piece(self):
             self.piece = random.choice(self.pieces)
+
 
       def set_rotation(self, key):
             if key == "D":
