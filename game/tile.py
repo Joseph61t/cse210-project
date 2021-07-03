@@ -8,3 +8,6 @@ class Tile():
     
     def set_block(self, block_type):
         self.block_type = block_type
+    
+    def get_block(self):
+        return self.block_type
