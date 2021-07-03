@@ -6,7 +6,7 @@ import arcade
 
 class Block(arcade.Sprite):
     def __init__(self):
-        super().__init__("game/Blue-block-only.png")
+        super().__init__("game/blocks/Blue-block.png")
         
         
         
