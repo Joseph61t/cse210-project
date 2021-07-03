@@ -1,5 +1,6 @@
 from game.tile import Tile
 from game.block import Block
+from game.piece import Piece
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -12,17 +13,43 @@ class Board():# create a large grid as the board
                  #size of block is 40px wide and starting spot is at 70 (50px border, 20px radius)
                 board.append(Tile(100+(i*35),100+(j*35)))
         return board
+
+    def get_board(self):
+        return self.coord_plane
+
+
     def draw(self):
         for tile in self.coord_plane:
-            if tile.block_type != 0:
+            if tile.get_block() != 0:
+
                 block = Block()
                 block._set_scale(.07)
                 position =  (tile.x, tile.y)
                 block._set_position(position)
                 block.draw()
+    
     def update(self):
         pass
 
-# test = Board()
-# print(test.coord_plane[199].x)
-# print(test.coord_plane[199].y)
+    def load_piece(self, piece):
+        x = 0
+        y = 0
+        board_index = 36 # this is a trivial number to put the piece at the top of the board
+        piece_index = 0
+        piece_grid = piece.get_piece() # this is to get the proper rotation
+        while y < 4:
+            x = 0
+            while x < 4:
+                if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
+                    self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
+                board_index -= 1
+                piece_index += 1
+                x += 1
+            board_index -= 6 # to skip to the next line
+            y += 1
+        
+           
+
+
+
+

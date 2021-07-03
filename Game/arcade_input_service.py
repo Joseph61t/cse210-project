@@ -48,5 +48,13 @@ class ArcadeInputService:
 
             velocity = (x, y)
             return velocity
+        
+        
+    def rotation(self, key,  piece):
+        if arcade.key.D in self._keys:
+            piece._set_rotation(key)
+        elif arcade.key.A in self._keys:
+            piece._set_rotation(key)
+
             
 
