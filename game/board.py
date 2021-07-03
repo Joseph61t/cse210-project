@@ -29,6 +29,7 @@ class Board():# create a large grid as the board
         for tile in self.coord_plane:
             if tile.get_block() != 0:
                 tile.draw()
+
     
     def update(self):
         pass
