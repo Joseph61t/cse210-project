@@ -9,9 +9,16 @@ class Board():# create a large grid as the board
     def create_board(self): # create a board with 50px border
         board = []
         for i in range(0,10):
-            for j in range(0,20):
+            for j in range(0,21):
                  #size of block is 40px wide and starting spot is at 70 (50px border, 20px radius)
-                board.append(Tile(100+(i*35),100+(j*35)))
+                position = ((100+(j*35)),(100+(i*35)))
+                tile = Tile()
+                tile._set_position(position)
+                board.append(tile)
+
+        for tile in range(0,10): # the base of the board is regular tiles
+            board[tile].set_block(1)
+        
         return board
 
     def get_board(self):
@@ -21,11 +28,7 @@ class Board():# create a large grid as the board
     def draw(self):
         for tile in self.coord_plane:
             if tile.get_block() != 0:
-                block = Block()
-                block._set_scale(.07)
-                position =  (tile.x, tile.y)
-                block._set_position(position)
-                block.draw()
+                tile.draw()
     
     def update(self):
         pass
