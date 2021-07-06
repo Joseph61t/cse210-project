@@ -5,11 +5,12 @@ from game.piece import Piece
 class Board():# create a large grid as the board
     def __init__(self):
         self.coord_plane = self.create_board()
+        self.load_piece()
 
     def create_board(self): # create a board with 50px border
         board = []
-        for i in range(0,10):
-            for j in range(0,21):
+        for i in range(0,21):
+            for j in range(0,10):
                  #size of block is 40px wide and starting spot is at 70 (50px border, 20px radius)
                 position = ((100+(j*35)),(100+(i*35)))
                 tile = Tile()
@@ -28,16 +29,18 @@ class Board():# create a large grid as the board
     def draw(self):
         for tile in self.coord_plane:
             if tile.get_block() != 0:
+                tile.set_block(1)
                 tile.draw()
 
     
     def update(self):
         pass
 
-    def load_piece(self, piece):
+    def load_piece(self):
         x = 0
         y = 0
-        board_index = 36 # this is a trivial number to put the piece at the top of the board
+        piece = Piece()
+        board_index = 166 # this is a trivial number to put the piece at the top of the board
         piece_index = 0
         piece_grid = piece.get_piece() # this is to get the proper rotation
         while y < 4:
