@@ -40,7 +40,7 @@ class Board():# create a large grid as the board
         x = 0
         y = 0
         piece = Piece()
-        board_index = 186 # this is a trivial number to put the piece at the top of the board
+        board_index = 166 # this is a trivial number to put the piece at the top of the board
         piece_index = 0
         piece_grid = piece.get_piece() # this is to get the proper rotation
         while y < 4:
