@@ -155,7 +155,7 @@ class Piece():
                   0, 0, 0, 0]]
                   ]
             self.set_piece()
-            self.status = 1 
+            
 
 
       def set_piece(self):

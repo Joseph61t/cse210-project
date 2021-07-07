@@ -6,6 +6,7 @@ class Board():# create a large grid as the board
     def __init__(self):
         self.coord_plane = self.create_board()
         self.load_piece()
+        self.frames = 0
 
     def create_board(self): # create a board with 50px border
         board = []
@@ -33,7 +34,17 @@ class Board():# create a large grid as the board
                 tile.draw()
 
     
+
     def update(self, piece):
+        # makes piece move down
+        if self.frames % 30 == 0:
+            for tile in self.coord_plane:
+                if tile.status == 1:
+                    
+        else:
+            self.frames += 1
+
+
         x = 0
         y = 0
         board_index = piece.position
@@ -44,6 +55,7 @@ class Board():# create a large grid as the board
             while x < 4:
                 if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
                     self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
+                    self.coord_plane[board_index].set_status(1) 
                 board_index -= 1
                 piece_index += 1
                 x += 1
