@@ -11,12 +11,15 @@ class Tile(arcade.Sprite):
 
     def set_block(self, block_type):
         self.block_type = block_type
-        
+
     def get_block(self):
         return self.block_type
     
     def set_status(self, alive):
         self.status = alive
+
+    def get_status(self):
+        return self.status
     
     def set_color(self):
         self.color = "game/background.png"
