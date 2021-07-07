@@ -4,6 +4,7 @@ class Piece():
       def __init__(self) -> None:
             self.piece = {}
             self.rotation = 0
+            self.position = 166
             self.pieces = [
                   # 'I' 
                   # rot 1

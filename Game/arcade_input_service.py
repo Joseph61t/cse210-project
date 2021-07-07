@@ -36,9 +36,9 @@ class ArcadeInputService:
 
         if position[1] > 20:
             if arcade.key.LEFT in self._keys:
-                x = -3
+                x = 1
             elif arcade.key.RIGHT in self._keys:
-                x = 3
+                x = -1
             if arcade.key.DOWN in self._keys: # speeds up the block
                 y = -4
             elif arcade.key.UP in self._keys: # moves the block to the bottom of the screen
