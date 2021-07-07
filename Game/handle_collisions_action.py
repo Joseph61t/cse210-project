@@ -12,54 +12,24 @@ class HandleCollisionsAction(Action):
     Stereotype:
         Controller
     """
-
+    def crash(self, board_list):
+        for i in range(0,210):
+            if board_list[i - 10].block_type != 0:
+                if board_list[i - 10].status == 0:
+                    return True
+            else:
+                return False
+    
     def execute(self, cast):
         """Executes the action using the given actors.
 
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        block = cast["blocks"][0]
-        position= block._get_position()
-        if position[1] < 20:
-            block._set_change_x(0)
-            block._set_change_y(0)
-        if position[0] <= 20:
-            block._set_change_x(0)
-        elif position[0] >= 480:
-            block._set_change_x(0)
+        board = cast["board"][0]
+        if self.crash(board.get_board()):
+            for Q in range(0,210):
+                        board.coord_plane[Q].set_status(0)
             
-        # for block in blocks:
-        #     if ball.get_position().get_y() - 1 == brick.get_position().get_y() and ball.get_position().get_x() == brick.get_position().get_x():
-        #         point = Point(ball.get_velocity().get_x(), (ball.get_velocity().get_y() * -1))
-        #         ball.set_velocity(point)
-                
-        #         brick.set_position(void)
-                
-        #     # covers if the ball hits a brick from above
-        #     if ball.get_position().get_y() + 1 == brick.get_position().get_y() and ball.get_position().get_x() == brick.get_position().get_x():
-        #         point = Point(ball.get_velocity().get_x(), (ball.get_velocity().get_y() * -1))
-        #         ball.set_velocity(point)
-                
-        #         brick.set_position(void)
-                
-        #     # covers if the ball hits a brick from the left
-        #     if ball.get_position().get_x() - 1 == brick.get_position().get_x() and ball.get_position().get_y() == brick.get_position().get_y():
-        #         point = Point((ball.get_velocity().get_x() * -1), ball.get_velocity().get_y())
-        #         ball.set_velocity(point) 
-                
-        #         brick.set_position(void)
-                
-        #     # covers if the ball hits a brick from the right
-        #     if ball.get_position().get_x() + 1 == brick.get_position().get_x() and ball.get_position().get_y() == brick.get_position().get_y():
-        #         point = Point((ball.get_velocity().get_x() * -1), ball.get_velocity().get_y())
-        #         ball.set_velocity(point)
-                
-        #         brick.set_position(void)
+            
 
-        
-            
-        
-        
-        
-        

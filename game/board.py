@@ -21,7 +21,7 @@ class Board():# create a large grid as the board
 
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
-            board[i].set_status(0)
+            board[i].status = 0
         
         return board
 
@@ -39,7 +39,7 @@ class Board():# create a large grid as the board
 
     def update(self):
         # makes piece move down
-        if self.frames % 100 == 29:
+        if self.frames % 10 == 1:
             for i in range(0,210):
                 if self.coord_plane[i].status == 1:
                     self.coord_plane[i-10].set_block(1)
