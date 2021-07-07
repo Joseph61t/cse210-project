@@ -1,6 +1,7 @@
 from game.tile import Tile
 from game.block import Block
 from game.piece import Piece
+import arcade
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -22,13 +23,12 @@ class Board():# create a large grid as the board
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
             board[i].status = 0
-            board[i].texture = "game/background.png"
+            self.set_color(board[i])#.texture = arcade.load_texture("game/background.png")
         
         return board
 
     def get_board(self):
         return self.coord_plane
-
 
     def draw(self):
         for tile in self.coord_plane:
@@ -72,22 +72,20 @@ class Board():# create a large grid as the board
                 x += 1
             board_index -= 6 # to skip to the next line
             y += 1
-        # board_index = 166 # this is a trivial number to put the piece at the top of the board
-        # piece_index = 0
-        # piece_grid = piece.get_piece() # this is to get the proper rotation
-        # while y < 4:
-        #     x = 0
-        #     while x < 4:
-        #         if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
-        #             self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
-        #         board_index -= 1
-        #         piece_index += 1
-        #         x += 1
-        #     board_index -= 6 # to skip to the next line
-        #     y += 1
-        
-           
-
-
-
-
+    
+    def set_color(self, tile):
+        tile.texture = arcade.load_texture("game/background.png")
+    
+    # board_index = 166 # this is a trivial number to put the piece at the top of the board
+    # piece_index = 0
+    # piece_grid = piece.get_piece() # this is to get the proper rotation
+    # while y < 4:
+    #     x = 0
+    #     while x < 4:
+    #         if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
+    #             self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
+    #         board_index -= 1
+    #         piece_index += 1
+    #         x += 1
+    #     board_index -= 6 # to skip to the next line
+    #     y += 1
