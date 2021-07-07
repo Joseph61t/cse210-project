@@ -1,6 +1,8 @@
 from game.tile import Tile
 from game.block import Block
 from game.piece import Piece
+from game.score import Score
+import arcade
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -22,6 +24,7 @@ class Board():# create a large grid as the board
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
             board[i].status = 0
+            self.set_color(board[i])
         
         return board
 
@@ -34,6 +37,7 @@ class Board():# create a large grid as the board
             if tile.get_block() != 0:
                 tile.set_block(1)
                 tile.draw()
+        
 
     
 
@@ -71,6 +75,9 @@ class Board():# create a large grid as the board
                 x += 1
             board_index -= 6 # to skip to the next line
             y += 1
+    def set_color(self, tile):
+
+        tile.texture = arcade.load_texture(f"game/blocks/background.png")
         # board_index = 166 # this is a trivial number to put the piece at the top of the board
         # piece_index = 0
         # piece_grid = piece.get_piece() # this is to get the proper rotation

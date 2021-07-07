@@ -1,6 +1,8 @@
-from game.board import Board
+
 
 class Score():
     score = 0
+
+    print(score)
 
         
