@@ -21,5 +21,3 @@ class Tile(arcade.Sprite):
     def get_status(self):
         return self.status
     
-    def set_color(self):
-        self.color = "game/background.png"
