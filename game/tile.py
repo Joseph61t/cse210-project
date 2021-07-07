@@ -1,7 +1,8 @@
 import arcade
 
 class Tile(arcade.Sprite):
-    def __init__(self, x=0, y=0, block_type =0, color="game/background.png"):
+    def __init__(self, x=0, y=0, block_type =0, color="game/blocks/blue-block.png"):
+
         super().__init__(color)
         self._set_scale(.07)
         self.block_type = block_type
@@ -10,7 +11,7 @@ class Tile(arcade.Sprite):
 
     def set_block(self, block_type):
         self.block_type = block_type
-        
+
     def get_block(self):
         return self.block_type
     
@@ -18,4 +19,9 @@ class Tile(arcade.Sprite):
         self.status = alive
 
     def get_status(self):
+
         return self.status
+
+        return self.status
+    
+
