@@ -32,6 +32,7 @@ class ArcadeInputService:
         """
         x = 0
         y = -1
+<<<<<<< Updated upstream
         # position = piece._get_position()
 
         # if position[1] > 20:
@@ -43,6 +44,20 @@ class ArcadeInputService:
             y = -3
         elif arcade.key.UP in self._keys: # moves the block to the bottom of the screen
             y = -20
+=======
+        position = block._get_position()
+
+        if position[1] > 20:
+            if arcade.key.LEFT in self._keys:
+                x = -1
+            elif arcade.key.RIGHT in self._keys:
+                x = 1
+            if arcade.key.DOWN in self._keys: # speeds up the block
+                y = -3
+            elif arcade.key.UP in self._keys: # moves the block to the bottom of the screen
+                position[1] = 20
+                block._set_position(position)
+>>>>>>> Stashed changes
             
 
         velocity = (x, y)

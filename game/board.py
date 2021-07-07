@@ -7,9 +7,13 @@ from game.move_actors_action import MoveActorsAction
 class Board():# create a large grid as the board
     def __init__(self):
         self.coord_plane = self.create_board()
+<<<<<<< Updated upstream
         self.frames = 0
         self.load_piece()
         
+=======
+        self.description = "board"
+>>>>>>> Stashed changes
 
     def create_board(self): # create a board with 50px border
         board = []
@@ -21,11 +25,19 @@ class Board():# create a large grid as the board
                 tile._set_position(position)
                 board.append(tile)
 
+<<<<<<< Updated upstream
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
             board[i].set_status(0)
+=======
+        for tile in range(190,200): # the base of the board is regular tiles
+            board[tile].set_block(1)
+>>>>>>> Stashed changes
         
         return board
+
+    def get_description(self):
+        return self.description
 
     def get_board(self):
         return self.coord_plane
@@ -38,6 +50,7 @@ class Board():# create a large grid as the board
                 tile.draw()
 
     
+<<<<<<< Updated upstream
 
     def update(self):
         # makes piece move down
@@ -60,6 +73,10 @@ class Board():# create a large grid as the board
                 self.coord_plane[i-30].set_status(1)
                 self.coord_plane[i].set_block(0)
                 self.coord_plane[i].set_status(0)
+=======
+    def update(self, piece):
+        pass
+>>>>>>> Stashed changes
 
     def update_left(self):
             for i in range(0,210):

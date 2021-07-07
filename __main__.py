@@ -35,16 +35,16 @@ def main():
     # cast ["pieces"] = [piece]
         
     
-    # test = Board()
-    # piece = Piece()
-    # index = 0
-    # test.load_piece(piece)
-    # grid = test.get_board()
-    # index = 0
+    test = Board()
+    piece = Piece()
+    index = 0
+    test.load_piece(piece)
+    grid = test.get_board()
+    index = 0
     
-    # while index < 200:
-    #     print(f' {grid[index].get_block()} {grid[index + 1].get_block()} {grid[index + 2].get_block()} {grid[index + 3].get_block()} {grid[index + 4].get_block()} {grid[index + 5].get_block()} {grid[index + 6].get_block()} {grid[index + 7].get_block()} {grid[index + 8].get_block()} {grid[index + 9].get_block()}')
-    #     index += 10
+    while index < 200:
+        print(f' {grid[index].get_block()} {grid[index + 1].get_block()} {grid[index + 2].get_block()} {grid[index + 3].get_block()} {grid[index + 4].get_block()} {grid[index + 5].get_block()} {grid[index + 6].get_block()} {grid[index + 7].get_block()} {grid[index + 8].get_block()} {grid[index + 9].get_block()}')
+        index += 10
     
     
 
