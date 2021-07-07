@@ -34,7 +34,8 @@ class Board():# create a large grid as the board
                 tile.draw()
 
     
-    def update(self):
+
+    def update(self, piece):
         # makes piece move down
         if self.frames % 30 == 0:
             for tile in self.coord_plane:
@@ -44,11 +45,9 @@ class Board():# create a large grid as the board
             self.frames += 1
 
 
-    def load_piece(self):
         x = 0
         y = 0
-        piece = Piece()
-        board_index = 166 # this is a trivial number to put the piece at the top of the board
+        board_index = piece.position
         piece_index = 0
         piece_grid = piece.get_piece() # this is to get the proper rotation
         while y < 4:
@@ -62,6 +61,23 @@ class Board():# create a large grid as the board
                 x += 1
             board_index -= 6 # to skip to the next line
             y += 1
+
+    def load_piece(self):
+        piece = Piece()
+        self.update(piece)
+        # board_index = 166 # this is a trivial number to put the piece at the top of the board
+        # piece_index = 0
+        # piece_grid = piece.get_piece() # this is to get the proper rotation
+        # while y < 4:
+        #     x = 0
+        #     while x < 4:
+        #         if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
+        #             self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
+        #         board_index -= 1
+        #         piece_index += 1
+        #         x += 1
+        #     board_index -= 6 # to skip to the next line
+        #     y += 1
         
            
 
