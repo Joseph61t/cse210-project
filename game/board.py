@@ -1,6 +1,8 @@
 from game.tile import Tile
 from game.block import Block
 from game.piece import Piece
+from game.move_actors_action import MoveActorsAction
+
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -41,7 +43,7 @@ class Board():# create a large grid as the board
         # makes piece move down
         if self.frames % 100 == 29:
             for i in range(0,210):
-                if self.coord_plane[i].status == 1:
+                if self.coord_plane[i].get_status() == 1:
                     self.coord_plane[i-10].set_block(1)
                     self.coord_plane[i-10].set_status(1)
                     self.coord_plane[i].set_block(0)
@@ -51,6 +53,34 @@ class Board():# create a large grid as the board
         else:
             self.frames += 1
 
+    def move_down_faster(self):
+        for i in range(0,210):
+            if self.coord_plane[i].get_status() == 1:
+                self.coord_plane[i-30].set_block(1)
+                self.coord_plane[i-30].set_status(1)
+                self.coord_plane[i].set_block(0)
+                self.coord_plane[i].set_status(0)
+
+    def update_left(self):
+            for i in range(0,210):
+                if self.coord_plane[i].get_status() == 1:
+                    self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
+                    self.coord_plane[i-1].set_status(1)
+                    self.coord_plane[i].set_block(0)
+                    self.coord_plane[i].set_status(0)
+
+    def update_right(self):
+        list_of_alive = []
+        index = 200
+        while index > 0:
+            if self.coord_plane[index].get_status() == 1:
+                list_of_alive.append(index+1)
+                self.coord_plane[index].set_block(0)
+                self.coord_plane[index].set_status(0)
+            index -= 1
+        for item in list_of_alive:
+            self.coord_plane[item].set_block(1)
+            self.coord_plane[item].set_status(1)
 
     def load_piece(self):
         piece = Piece()

@@ -14,6 +14,17 @@ class MoveActorsAction(Action, arcade.Sprite):
     Attributes:
         _input_service (InputService): An instance of InputService.
     """
+    def __init__(self):
+        """The class constructor.
+        
+        Args:
+            
+        """
+        self.x_vel = 0
+        self.y_vel = 0
+
+    def get_x_vel(self):
+        return self.x_vel
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -41,8 +52,8 @@ class MoveActorsAction(Action, arcade.Sprite):
         velocity = actor.get_velocity()
         x_pos = position.get_x()
         y_pos = position.get_y()
-        x_vel = velocity.get_x()
-        y_vel = velocity.get_y()
+        self.x_vel = velocity.get_x()
+        self.y_vel = velocity.get_y()
 
 
         # if actor.get_description() == "block":
@@ -61,7 +72,5 @@ class MoveActorsAction(Action, arcade.Sprite):
         # position = Point(x_new, y_new)
 
         actor.set_position(position)
-        piece_updated_position = (x_vel + (y_vel * 10))
-        actor.position = piece_updated_position
 
     

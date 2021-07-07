@@ -1,3 +1,4 @@
+from game.board import Board
 from game.constants import MAX_X
 from game.constants import MAX_Y
 from game import point
@@ -19,15 +20,15 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        block = cast["blocks"][0]
-        position= block._get_position()
-        if position[1] < 20:
-            block._set_change_x(0)
-            block._set_change_y(0)
-        if position[0] <= 20:
-            block._set_change_x(0)
-        elif position[0] >= 480:
-            block._set_change_x(0)
+        board = cast["board"][0]
+        # position= block._get_position()
+        # if position[1] < 20:
+        #     piece._set_change_x(0)
+        #     piece._set_change_y(0)
+        # if position[0] <= 20:
+        #     piece._set_change_x(0)
+        # elif position[0] >= 480:
+        #     piece._set_change_x(0)
             
         # for block in blocks:
         #     if ball.get_position().get_y() - 1 == brick.get_position().get_y() and ball.get_position().get_x() == brick.get_position().get_x():
