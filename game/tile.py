@@ -7,7 +7,7 @@ class Tile(arcade.Sprite):
         self.block_type = block_type
         self._set_position((x,y))
         self.status = 0 
-
+        
     def set_block(self, block_type):
         self.block_type = block_type
         

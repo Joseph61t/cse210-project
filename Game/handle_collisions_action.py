@@ -14,8 +14,11 @@ class HandleCollisionsAction(Action):
     """
     def crash(self, board_list):
         for i in range(0,210):
+            
             if board_list[i - 10].block_type != 0:
+               # board_list[i - 10].texture = "game/blocks/red-block.png"
                 if board_list[i - 10].status == 0:
+                    
                     return True
             else:
                 return False
