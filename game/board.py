@@ -33,16 +33,7 @@ class Board():# create a large grid as the board
 
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
-
             board[i].set_status(0)
-
-        for tile in range(190,200): # the base of the board is regular tiles
-            board[tile].set_block(1)
-
-            board[i].status = 0
-            self.set_color(board[i])
-
-
         
         return board
 
