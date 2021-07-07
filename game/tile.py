@@ -19,5 +19,9 @@ class Tile(arcade.Sprite):
         self.status = alive
 
     def get_status(self):
+
+        return self.status
+
         return self.status
     
+

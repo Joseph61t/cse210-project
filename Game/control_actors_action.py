@@ -1,3 +1,5 @@
+from game.board import Board
+from game.piece import Piece
 from game.block import Block
 from game import constants
 from game.action import Action
@@ -27,9 +29,15 @@ class ControlActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        block = cast["blocks"][0] # there's only one in the cast
-        direction = self._input_service.get_direction(block)
-        block._set_change_x(direction[0])
-        block._set_change_y(direction[1])
+        board = cast["board"][0] # there's only one in the cast
+        direction = self._input_service.get_direction()
+        if direction[0] == 1:
+            board.update_left()
+        if direction[0] == -1:
+            board.update_right()
+        if direction[1] == -3:
+            board.move_down_faster()
+        # piece.veloctiy[0] = direction[0]
+        # piece.velocty[1] = direction[1]
         
 

@@ -1,15 +1,24 @@
 from game.tile import Tile
 from game.block import Block
 from game.piece import Piece
+
+from game.move_actors_action import MoveActorsAction
+
+
 from game.score import Score
 from arcade import load_texture
+
 
 class Board():# create a large grid as the board
     def __init__(self):
         self.coord_plane = self.create_board()
+
         self.frames = 0
         self.load_piece()
         
+
+        self.description = "board"
+
 
     def create_board(self): # create a board with 50px border
         board = []
@@ -21,13 +30,24 @@ class Board():# create a large grid as the board
                 tile._set_position(position)
                 board.append(tile)
 
+
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
+
+            board[i].set_status(0)
+
+        for tile in range(190,200): # the base of the board is regular tiles
+            board[tile].set_block(1)
+
             board[i].status = 0
             self.set_color(board[i])
 
+
         
         return board
+
+    def get_description(self):
+        return self.description
 
     def get_board(self):
         return self.coord_plane
@@ -41,11 +61,12 @@ class Board():# create a large grid as the board
 
     
 
+
     def update(self):
         # makes piece move down
         if self.frames % 10 == 1:
             for i in range(0,210):
-                if self.coord_plane[i].status == 1:
+                if self.coord_plane[i].get_status() == 1:
                     self.coord_plane[i-10].set_block(1)
                     self.coord_plane[i-10].set_status(1)
                     self.coord_plane[i].set_block(0)
@@ -55,6 +76,38 @@ class Board():# create a large grid as the board
         else:
             self.frames += 1
 
+    def move_down_faster(self):
+        for i in range(0,210):
+            if self.coord_plane[i].get_status() == 1:
+                self.coord_plane[i-30].set_block(1)
+                self.coord_plane[i-30].set_status(1)
+                self.coord_plane[i].set_block(0)
+                self.coord_plane[i].set_status(0)
+
+    def update(self, piece):
+        pass
+
+
+    def update_left(self):
+            for i in range(0,210):
+                if self.coord_plane[i].get_status() == 1:
+                    self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
+                    self.coord_plane[i-1].set_status(1)
+                    self.coord_plane[i].set_block(0)
+                    self.coord_plane[i].set_status(0)
+
+    def update_right(self):
+        list_of_alive = []
+        index = 200
+        while index > 0:
+            if self.coord_plane[index].get_status() == 1:
+                list_of_alive.append(index+1)
+                self.coord_plane[index].set_block(0)
+                self.coord_plane[index].set_status(0)
+            index -= 1
+        for item in list_of_alive:
+            self.coord_plane[item].set_block(1)
+            self.coord_plane[item].set_status(1)
 
     def load_piece(self):
         piece = Piece()

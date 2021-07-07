@@ -7,9 +7,9 @@ import arcade
 class Block(arcade.Sprite):
     def __init__(self):
         super().__init__("game/blocks/Blue-block.png")
+        self._description = 'block' 
         
-        
-        
-        
+    def get_description(self):
+        return self._description
     
         

@@ -1,3 +1,4 @@
+from game.board import Board
 from game.constants import MAX_X
 from game.constants import MAX_Y
 from game import point
@@ -27,9 +28,19 @@ class HandleCollisionsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         board = cast["board"][0]
+
+        # position= block._get_position()
+        # if position[1] < 20:
+        #     piece._set_change_x(0)
+        #     piece._set_change_y(0)
+        # if position[0] <= 20:
+        #     piece._set_change_x(0)
+        # elif position[0] >= 480:
+        #     piece._set_change_x(0)
+
         if self.crash(board.get_board()):
             for Q in range(0,210):
                         board.coord_plane[Q].set_status(0)
             board.load_piece()
-            
+
 

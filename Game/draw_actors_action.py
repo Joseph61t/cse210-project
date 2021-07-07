@@ -26,6 +26,9 @@ class DrawActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         self._output_service.clear_screen()
+
         for group in cast.values():
+            if group[0].get_description() == 'board':
+                group[0].draw()
             self._output_service.draw_actors(group)
         self._output_service.flush_buffer()

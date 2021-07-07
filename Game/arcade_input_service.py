@@ -24,7 +24,7 @@ class ArcadeInputService:
     def remove_key(self, key, modifiers):
         self._keys.remove(key)
 
-    def get_direction(self, block):
+    def get_direction(self):
         """Gets the selected direction for the given player.
 
         Returns:
@@ -32,22 +32,36 @@ class ArcadeInputService:
         """
         x = 0
         y = -1
+<<<<<<< Updated upstream
+        # position = piece._get_position()
+
+        # if position[1] > 20:
+        if arcade.key.LEFT in self._keys:
+            x = 1
+        elif arcade.key.RIGHT in self._keys:
+            x = -1
+        if arcade.key.DOWN in self._keys: # speeds up the block
+            y = -3
+        elif arcade.key.UP in self._keys: # moves the block to the bottom of the screen
+            y = -20
+=======
         position = block._get_position()
 
         if position[1] > 20:
             if arcade.key.LEFT in self._keys:
-                x = 1
-            elif arcade.key.RIGHT in self._keys:
                 x = -1
+            elif arcade.key.RIGHT in self._keys:
+                x = 1
             if arcade.key.DOWN in self._keys: # speeds up the block
-                y = -4
+                y = -3
             elif arcade.key.UP in self._keys: # moves the block to the bottom of the screen
                 position[1] = 20
                 block._set_position(position)
+>>>>>>> Stashed changes
             
 
-            velocity = (x, y)
-            return velocity
+        velocity = (x, y)
+        return velocity
         
         
     def rotation(self, key,  piece):
@@ -55,6 +69,7 @@ class ArcadeInputService:
             piece._set_rotation(key)
         elif arcade.key.A in self._keys:
             piece._set_rotation(key)
+        
 
             
 

@@ -4,7 +4,12 @@ class Piece():
       def __init__(self) -> None:
             self.piece = {}
             self.rotation = 0
+<<<<<<< Updated upstream
+            self.velocity = (0,0)
             self.position = 166
+=======
+            self.position = 36
+>>>>>>> Stashed changes
             self.pieces = [
                   # 'I' 
                   # rot 1
@@ -177,6 +182,11 @@ class Piece():
                   pass
       def get_piece(self):
             return self.piece[self.rotation]
+
+      
+                  
+
+      
 # piece = Piece()
 # print(piece.piece)
 # piece.set_rotation('@')
