@@ -5,8 +5,9 @@ from game.piece import Piece
 class Board():# create a large grid as the board
     def __init__(self):
         self.coord_plane = self.create_board()
-        self.load_piece()
         self.frames = 0
+        self.load_piece()
+        
 
     def create_board(self): # create a board with 50px border
         board = []
@@ -18,8 +19,9 @@ class Board():# create a large grid as the board
                 tile._set_position(position)
                 board.append(tile)
 
-        for tile in range(0,10): # the base of the board is regular tiles
-            board[tile].set_block(1)
+        for i in range(0,10): # the base of the board is regular tiles
+            board[i].set_block(1)
+            board[i].set_status(0)
         
         return board
 
@@ -35,16 +37,24 @@ class Board():# create a large grid as the board
 
     
 
-    def update(self, piece):
+    def update(self):
         # makes piece move down
-        if self.frames % 30 == 0:
-            for tile in self.coord_plane:
-                if tile.status == 1:
+        if self.frames % 100 == 29:
+            for i in range(0,210):
+                if self.coord_plane[i].status == 1:
+                    self.coord_plane[i-10].set_block(1)
+                    self.coord_plane[i-10].set_status(1)
+                    self.coord_plane[i].set_block(0)
+                    self.coord_plane[i].set_status(0)
+            self.frames += 1 
                     
         else:
             self.frames += 1
 
 
+    def load_piece(self):
+        piece = Piece()
+        
         x = 0
         y = 0
         board_index = piece.position
@@ -61,10 +71,6 @@ class Board():# create a large grid as the board
                 x += 1
             board_index -= 6 # to skip to the next line
             y += 1
-
-    def load_piece(self):
-        piece = Piece()
-        self.update(piece)
         # board_index = 166 # this is a trivial number to put the piece at the top of the board
         # piece_index = 0
         # piece_grid = piece.get_piece() # this is to get the proper rotation
