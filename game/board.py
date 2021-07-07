@@ -22,6 +22,7 @@ class Board():# create a large grid as the board
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
             board[i].status = 0
+            board[i].texture = "game/background.png"
         
         return board
 
