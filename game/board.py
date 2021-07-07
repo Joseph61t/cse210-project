@@ -84,21 +84,19 @@ class Board():# create a large grid as the board
                 self.coord_plane[i].set_block(0)
                 self.coord_plane[i].set_status(0)
 
-    def update(self, piece):
-        pass
 
 
     def update_left(self):
-            for i in range(0,210):
-                if self.coord_plane[i].get_status() == 1:
-                    self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
-                    self.coord_plane[i-1].set_status(1)
-                    self.coord_plane[i].set_block(0)
-                    self.coord_plane[i].set_status(0)
+        for i in range(0,210):
+            if self.coord_plane[i].get_status() == 1:
+                self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
+                self.coord_plane[i-1].set_status(1)
+                self.coord_plane[i].set_block(0)
+                self.coord_plane[i].set_status(0)
 
     def update_right(self):
         list_of_alive = []
-        index = 200
+        index = 210
         while index > 0:
             if self.coord_plane[index].get_status() == 1:
                 list_of_alive.append(index+1)

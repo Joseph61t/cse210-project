@@ -36,9 +36,9 @@ def main():
         
     
     test = Board()
-    piece = Piece()
+    
     index = 0
-    test.load_piece(piece)
+    test.load_piece()
     grid = test.get_board()
     index = 0
     
