@@ -1,4 +1,5 @@
 from game import constants
+from game import board
 from game.action import Action
 from game.point import Point
 import arcade
@@ -55,9 +56,12 @@ class MoveActorsAction(Action, arcade.Sprite):
         #        x_vel = 0
 
 
-        x_new = (x_pos + x_vel )
-        y_new = (y_pos + y_vel ) 
-        position = Point(x_new, y_new)
+        # x_new = (x_pos + x_vel )
+        # y_new = (y_pos + y_vel ) 
+        # position = Point(x_new, y_new)
+
         actor.set_position(position)
+        piece_updated_position = (x_vel + (y_vel * 10))
+        actor.position = piece_updated_position
 
     
