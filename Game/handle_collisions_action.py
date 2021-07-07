@@ -14,14 +14,13 @@ class HandleCollisionsAction(Action):
     """
     def crash(self, board_list):
         for i in range(0,210):
+            #print(i) make sure it checks through all the tiles
             
-            if board_list[i - 10].block_type != 0:
+            if board_list[i - 10].block_type != 0 and board_list[i].status == 1:
                # board_list[i - 10].texture = "game/blocks/red-block.png"
                 if board_list[i - 10].status == 0:
                     
                     return True
-            else:
-                return False
     
     def execute(self, cast):
         """Executes the action using the given actors.
