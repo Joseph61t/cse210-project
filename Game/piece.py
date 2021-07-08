@@ -1,13 +1,11 @@
 import random
 
 class Piece():
-      def __init__(self) -> None:
+      def __init__(self):
             self.piece = {}
             self.rotation = 0
             self.velocity = (0,0)
             self.position = 166
-
-            self.position = 36
 
             self.pieces = [
                   # 'I' 
@@ -179,6 +177,8 @@ class Piece():
                         self.rotation = 3
             else:
                   pass
+
+
       def get_piece(self):
             return self.piece[self.rotation]
 

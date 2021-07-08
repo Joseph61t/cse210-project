@@ -37,7 +37,7 @@ class ControlActorsAction(Action):
             board.update_right()
         if direction[1] == -3:
             board.move_down_faster()
-        # piece.veloctiy[0] = direction[0]
-        # piece.velocty[1] = direction[1]
+        
+        
         
 

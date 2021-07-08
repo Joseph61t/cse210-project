@@ -14,17 +14,8 @@ class MoveActorsAction(Action, arcade.Sprite):
     Attributes:
         _input_service (InputService): An instance of InputService.
     """
-    def __init__(self):
-        """The class constructor.
-        
-        Args:
-            
-        """
-        self.x_vel = 0
-        self.y_vel = 0
 
-    def get_x_vel(self):
-        return self.x_vel
+    
 
     def execute(self, cast):
         """Executes the action using the given actors.

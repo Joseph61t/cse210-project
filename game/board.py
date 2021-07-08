@@ -12,11 +12,8 @@ from arcade import load_texture
 class Board():# create a large grid as the board
     def __init__(self):
         self.coord_plane = self.create_board()
-
         self.frames = 0
         self.load_piece()
-        
-
         self.description = "board"
 
 
@@ -29,21 +26,10 @@ class Board():# create a large grid as the board
                 tile = Tile()
                 tile._set_position(position)
                 board.append(tile)
-
-
+        
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
-
-            board[i].set_status(0)
-
-        for tile in range(190,200): # the base of the board is regular tiles
-            board[tile].set_block(1)
-
-            board[i].status = 0
-            self.set_color(board[i])
-
-
-        
+            board[i].set_status(0)        
         return board
 
     def get_description(self):
@@ -96,7 +82,7 @@ class Board():# create a large grid as the board
 
     def update_right(self):
         list_of_alive = []
-        index = 210
+        index = 200
         while index > 0:
             if self.coord_plane[index].get_status() == 1:
                 list_of_alive.append(index+1)
