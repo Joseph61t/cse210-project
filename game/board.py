@@ -24,13 +24,14 @@ class Board():# create a large grid as the board
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
             board[i].status = 0
+
             self.set_color(board[i])
+
         
         return board
 
     def get_board(self):
         return self.coord_plane
-
 
     def draw(self):
         for tile in self.coord_plane:
@@ -92,8 +93,5 @@ class Board():# create a large grid as the board
         #     board_index -= 6 # to skip to the next line
         #     y += 1
         
-           
-
-
-
-
+          
+   
