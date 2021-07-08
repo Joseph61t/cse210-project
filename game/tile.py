@@ -8,6 +8,8 @@ class Tile(arcade.Sprite):
         self.block_type = block_type
         self._set_position((x,y))
         self.status = 0 
+        self.canLeft = 1
+        self.canRight = 1
 
     def set_block(self, block_type):
         self.block_type = block_type
@@ -19,9 +21,18 @@ class Tile(arcade.Sprite):
         self.status = alive
 
     def get_status(self):
-
         return self.status
 
-        return self.status
+    def set_left(self, left):
+        self.canLeft = left
+
+    def set_right(self, right):
+        self.canRight = right
+
+    def get_left(self):
+        return self.canLeft
+
+    def get_right(self):
+        return self.canRight
     
 
