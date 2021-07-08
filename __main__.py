@@ -11,6 +11,7 @@ from game.arcade_input_service import ArcadeInputService
 from game.arcade_output_service import ArcadeOutputService
 from game.block import Block
 from game.piece import Piece
+from game.score import Score
 
 from game.board import Board
 import time
@@ -31,8 +32,11 @@ def main():
     block._set_position(start)
     block._set_change_y(-1)
     board = Board()
+    score = Score()
     cast ["board"] = [board]
     cast ["blocks"] = [block]
+    cast ["score"] = [score]
+    
         
     
     # test = Board()
