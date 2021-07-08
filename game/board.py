@@ -54,11 +54,13 @@ class Board():# create a large grid as the board
 
     def update(self):
         # makes piece move down
-        if self.frames % 10 == 1:
+        if self.frames % 30 == 1:
             self.piece.position -= 10
             for i in range(0,210):
                 if self.coord_plane[i].status == 1:
-                    self.transpose_piece_to_board()
+                    # self.transpose_piece_to_board()
+                    self.coord_plane[i - 10].set_block(1)
+                    self.coord_plane[i - 10].set_status(1)
                     self.coord_plane[i].set_block(0)
                     self.coord_plane[i].set_status(0)
             self.frames += 1 
@@ -78,27 +80,30 @@ class Board():# create a large grid as the board
 
 
     def update_left(self):
-        self.piece.position -= 1
-        for i in range(0,210):
-            if self.coord_plane[i].get_status() == 1 and self.coord_plane[i].get_left() == 1:
-                self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
-                self.coord_plane[i-1].set_status(1)
-                self.coord_plane[i].set_block(0)
-                self.coord_plane[i].set_status(0)
+        if self.piece.position % 10 != 2:
+            self.piece.position -= 1
+            for i in range(0,210):
+                if self.coord_plane[i].get_status() == 1 and self.coord_plane[i].get_left() == 1:
+                    self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
+                    self.coord_plane[i-1].set_status(1)
+                    self.coord_plane[i].set_block(0)
+                    self.coord_plane[i].set_status(0)
 
     def update_right(self):
-        list_of_alive = []
-        index = 200
-        while index > 0:
-            if self.coord_plane[index].get_status() == 1 and self.coord_plane[index].get_right() == 1:
-                list_of_alive.append(index+1)
-                self.coord_plane[index].set_block(0)
-                self.coord_plane[index].set_status(0)
-            index -= 1
-        for item in list_of_alive:
-            self.coord_plane[item].set_block(1)
-            self.coord_plane[item].set_status(1)
-
+        if self.piece.position % 10 != 9:
+            list_of_alive = []
+            index = 200
+            self.piece.position += 1
+            while index > 0:
+                if self.coord_plane[index].get_status() == 1 and self.coord_plane[index].get_right() == 1:
+                    list_of_alive.append(index+1)
+                    self.coord_plane[index].set_block(0)
+                    self.coord_plane[index].set_status(0)
+                index -= 1
+            for item in list_of_alive:
+                self.coord_plane[item].set_block(1)
+                self.coord_plane[item].set_status(1)
+    
     def load_piece(self):
         self.piece = Piece()
         

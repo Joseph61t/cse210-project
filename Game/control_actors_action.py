@@ -39,5 +39,7 @@ class ControlActorsAction(Action):
             board.move_down_faster()
         if self._input_service.should_rotate_left():
             board.piece.rotate_left()
+            board.transpose_piece_to_board()
         elif self._input_service.should_rotate_right():
             board.piece.rotate_right()
+            board.transpose_piece_to_board()

@@ -26,16 +26,6 @@ def main():
 
     board = Board()
     cast ["board"] = [board]
-    
-        
-    
-    
-    
-    
-    
-    
-
-
     # create the script {key: tag, value: list}
     script = {}
 
