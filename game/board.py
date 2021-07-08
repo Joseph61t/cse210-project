@@ -105,6 +105,11 @@ class Board():# create a large grid as the board
         board_index = piece.position
         piece_index = 0
         piece_grid = piece.get_piece() # this is to get the proper rotation
+       
+        for e in range(0, 210):
+            self.coord_plane[e].set_left(1)
+            self.coord_plane[e].set_right(1)
+        
         while y < 4:
             x = 0
             while x < 4:
