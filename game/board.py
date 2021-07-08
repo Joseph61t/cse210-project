@@ -53,13 +53,14 @@ class Board():# create a large grid as the board
 
     def update(self):
         # makes piece move down
-        if self.frames % 10 == 1:
+        if self.frames % 60 == 59:
             for i in range(0,210):
                 if self.coord_plane[i].status == 1:
                     self.coord_plane[i-10].set_block(1)
                     self.coord_plane[i-10].set_status(1)
                     self.coord_plane[i].set_block(0)
                     self.coord_plane[i].set_status(0)
+                    self.frames = 0
             self.frames += 1 
                     
         else:
@@ -69,8 +70,8 @@ class Board():# create a large grid as the board
     def move_down_faster(self):
         for i in range(0,210):
             if self.coord_plane[i].get_status() == 1:
-                self.coord_plane[i-30].set_block(1)
-                self.coord_plane[i-30].set_status(1)
+                self.coord_plane[i-10].set_block(1)
+                self.coord_plane[i-10].set_status(1)
                 self.coord_plane[i].set_block(0)
                 self.coord_plane[i].set_status(0)
 
