@@ -24,15 +24,9 @@ def main():
     cast = {}
     start = (250, 550)
 
-    
-    # block = Block()
-    # piece = Piece()
-    # block._set_scale(.07)
-    # block._set_position(start)
-    # block._set_change_y(-1)
     board = Board()
     cast ["board"] = [board]
-    # cast ["pieces"] = [piece]
+    
         
     
     

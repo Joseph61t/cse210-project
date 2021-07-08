@@ -80,7 +80,7 @@ class Board():# create a large grid as the board
     def update_left(self):
         self.piece.position -= 1
         for i in range(0,210):
-            if self.coord_plane[i].get_status() == 1:
+            if self.coord_plane[i].get_status() == 1 and self.coord_plane[i].get_left() == 1:
                 self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
                 self.coord_plane[i-1].set_status(1)
                 self.coord_plane[i].set_block(0)
@@ -90,7 +90,7 @@ class Board():# create a large grid as the board
         list_of_alive = []
         index = 200
         while index > 0:
-            if self.coord_plane[index].get_status() == 1:
+            if self.coord_plane[index].get_status() == 1 and self.coord_plane[index].get_right() == 1:
                 list_of_alive.append(index+1)
                 self.coord_plane[index].set_block(0)
                 self.coord_plane[index].set_status(0)
@@ -107,6 +107,7 @@ class Board():# create a large grid as the board
         board_index = self.piece.position
         piece_index = 0
         piece_grid = self.piece.get_piece() # this is to get the proper rotation
+
         while y < 4:
             x = 0
             while x < 4:
@@ -140,21 +141,8 @@ class Board():# create a large grid as the board
   
   
     def set_color(self, tile):
-
         tile.texture = arcade.load_texture(f"game/blocks/background.png")
-        # board_index = 166 # this is a trivial number to put the piece at the top of the board
-        # piece_index = 0
-        # piece_grid = piece.get_piece() # this is to get the proper rotation
-        # while y < 4:
-        #     x = 0
-        #     while x < 4:
-        #         if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
-        #             self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
-        #         board_index -= 1
-        #         piece_index += 1
-        #         x += 1
-        #     board_index -= 6 # to skip to the next line
-        #     y += 1
+        
         
           
    
