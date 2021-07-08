@@ -37,7 +37,7 @@ class ControlActorsAction(Action):
             board.update_right()
         if direction[1] == -3:
             board.move_down_faster()
-        
-        
-        
-
+        if self._input_service.should_rotate_left():
+            board.piece.rotate_left()
+        elif self._input_service.should_rotate_right():
+            board.piece.rotate_right()

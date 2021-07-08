@@ -10,6 +10,7 @@ class Board():# create a large grid as the board
         self.frames = 0
         self.load_piece()
         self.description = "board"
+        self.piece = Piece()
 
 
 
@@ -54,10 +55,10 @@ class Board():# create a large grid as the board
     def update(self):
         # makes piece move down
         if self.frames % 10 == 1:
+            self.piece.position -= 10
             for i in range(0,210):
                 if self.coord_plane[i].status == 1:
-                    self.coord_plane[i-10].set_block(1)
-                    self.coord_plane[i-10].set_status(1)
+                    self.transpose_piece_to_board()
                     self.coord_plane[i].set_block(0)
                     self.coord_plane[i].set_status(0)
             self.frames += 1 
@@ -77,6 +78,7 @@ class Board():# create a large grid as the board
 
 
     def update_left(self):
+        self.piece.position -= 1
         for i in range(0,210):
             if self.coord_plane[i].get_status() == 1:
                 self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
@@ -98,13 +100,13 @@ class Board():# create a large grid as the board
             self.coord_plane[item].set_status(1)
 
     def load_piece(self):
-        piece = Piece()
+        self.piece = Piece()
         
         x = 0
         y = 0
-        board_index = piece.position
+        board_index = self.piece.position
         piece_index = 0
-        piece_grid = piece.get_piece() # this is to get the proper rotation
+        piece_grid = self.piece.get_piece() # this is to get the proper rotation
         while y < 4:
             x = 0
             while x < 4:
@@ -116,6 +118,27 @@ class Board():# create a large grid as the board
                 x += 1
             board_index -= 6 # to skip to the next line
             y += 1
+  
+    def transpose_piece_to_board(self):
+        x = 0
+        y = 0
+        board_index = self.piece.position
+        piece_index = 0
+        piece_grid = self.piece.get_piece() # this is to get the proper rotation
+        while y < 4:
+            x = 0
+            while x < 4:
+                if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
+                    print(board_index)
+                    self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
+                    self.coord_plane[board_index].set_status(1) 
+                board_index -= 1
+                piece_index += 1
+                x += 1
+            board_index -= 6 # to skip to the next line
+            y += 1
+  
+  
     def set_color(self, tile):
 
         tile.texture = arcade.load_texture(f"game/blocks/background.png")

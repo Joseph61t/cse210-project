@@ -163,20 +163,18 @@ class Piece():
       def set_piece(self):
             self.piece = random.choice(self.pieces)
 
-
-      def set_rotation(self, key):
-            if key == "D":
-                  if self.rotation < 3:
-                        self.rotation += 1
-                  else:
-                        self.rotation = 0
-            elif key == "A":
-                  if self.rotation > 0:
-                        self.rotation -= 1
-                  else:
-                        self.rotation = 3
+      def rotate_right(self):
+            if self.rotation < 3:
+                  self.rotation += 1
             else:
-                  pass
+                  self.rotation = 0
+
+      def rotate_left(self):
+            if self.rotation > 0:
+                  self.rotation -= 1
+            else:
+                  self.rotation = 3
+
 
 
       def get_piece(self):
