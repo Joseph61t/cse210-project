@@ -1,13 +1,8 @@
 from game.tile import Tile
 from game.block import Block
 from game.piece import Piece
-
-from game.move_actors_action import MoveActorsAction
-
-
 from game.score import Score
-from arcade import load_texture
-
+import arcade
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -15,6 +10,7 @@ class Board():# create a large grid as the board
         self.frames = 0
         self.load_piece()
         self.description = "board"
+
 
 
     def create_board(self): # create a board with 50px border
@@ -26,14 +22,22 @@ class Board():# create a large grid as the board
                 tile = Tile()
                 tile._set_position(position)
                 board.append(tile)
+
         
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
             board[i].set_status(0)        
-        return board
 
-    def get_description(self):
-        return self.description
+
+        for i in range(0,10): # the base of the board is regular tiles
+            board[i].set_block(1)
+            board[i].status = 0
+
+            self.set_color(board[i])
+
+        
+
+        return board
 
     def get_board(self):
         return self.coord_plane
@@ -47,12 +51,11 @@ class Board():# create a large grid as the board
 
     
 
-
     def update(self):
         # makes piece move down
         if self.frames % 10 == 1:
             for i in range(0,210):
-                if self.coord_plane[i].get_status() == 1:
+                if self.coord_plane[i].status == 1:
                     self.coord_plane[i-10].set_block(1)
                     self.coord_plane[i-10].set_status(1)
                     self.coord_plane[i].set_block(0)
@@ -61,6 +64,7 @@ class Board():# create a large grid as the board
                     
         else:
             self.frames += 1
+
 
     def move_down_faster(self):
         for i in range(0,210):
@@ -112,10 +116,9 @@ class Board():# create a large grid as the board
                 x += 1
             board_index -= 6 # to skip to the next line
             y += 1
-    
-    def set_color(self, item):
-        item.texture = load_texture("game/blocks/background.png")
+    def set_color(self, tile):
 
+        tile.texture = arcade.load_texture(f"game/blocks/background.png")
         # board_index = 166 # this is a trivial number to put the piece at the top of the board
         # piece_index = 0
         # piece_grid = piece.get_piece() # this is to get the proper rotation
