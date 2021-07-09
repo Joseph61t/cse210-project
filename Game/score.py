@@ -1,8 +1,11 @@
+from game.board import Board
 
 
 class Score():
-    score = 0
 
-    print(score)
+    def __init__(self):
 
-        
+        self.score = 0
+
+    def update(self):
+        print("Hello world")
