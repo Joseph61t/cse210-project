@@ -72,8 +72,8 @@ class Board():# create a large grid as the board
     def move_down_faster(self):
         for i in range(0,210):
             if self.coord_plane[i].get_status() == 1:
-                self.coord_plane[i-30].set_block(1)
-                self.coord_plane[i-30].set_status(1)
+                self.coord_plane[i-10].set_block(1)
+                self.coord_plane[i-10].set_status(1)
                 self.coord_plane[i].set_block(0)
                 self.coord_plane[i].set_status(0)
 
