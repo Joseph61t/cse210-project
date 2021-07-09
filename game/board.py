@@ -1,7 +1,7 @@
 from game.tile import Tile
 from game.block import Block
 from game.piece import Piece
-# from game.score import Score
+from game.score import Score
 import arcade
 
 class Board():# create a large grid as the board
@@ -9,9 +9,11 @@ class Board():# create a large grid as the board
         self.coord_plane = self.create_board()
         self.frames = 0
         self.description = "board"
-        self.piece = Piece()
         self.block_left = False
         self.block_right = False
+        self.score = Score()
+
+
 
 
         self.piece = None
@@ -47,6 +49,8 @@ class Board():# create a large grid as the board
             if tile.get_block() != 0:
                 tile.set_block(1)
                 tile.draw()
+
+        self.score.draw()
         
 
 
@@ -83,6 +87,7 @@ class Board():# create a large grid as the board
                 lines_to_delete.append(i)
         if len(lines_to_delete) > 0:
             for line in lines_to_delete:
+                self.score.update()
                 for j in range(0,10):
                     self.coord_plane[(line * 10) + j].set_block(0)
                     self.coord_plane[(line * 10) + j].set_status(0)
