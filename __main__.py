@@ -11,6 +11,7 @@ from game.arcade_input_service import ArcadeInputService
 from game.arcade_output_service import ArcadeOutputService
 from game.block import Block
 from game.piece import Piece
+from game.score import Score
 
 from game.board import Board
 import time

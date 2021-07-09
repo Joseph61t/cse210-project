@@ -1,6 +1,6 @@
-from game.board import Board
 
 
+# 1 point per line cleared
 class Score():
 
     def __init__(self):
@@ -8,4 +8,7 @@ class Score():
         self.score = 0
 
     def update(self):
-        print("Hello world")
+
+        self.score += 1
+        
+
