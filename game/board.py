@@ -27,13 +27,7 @@ class Board():# create a large grid as the board
         
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
-            board[i].set_status(0)        
-
-
-        for i in range(0,10): # the base of the board is regular tiles
-            board[i].set_block(1)
-            board[i].status = 0
-
+            board[i].set_status(0)
             self.set_color(board[i])
 
         
@@ -50,10 +44,11 @@ class Board():# create a large grid as the board
                 tile.draw()
         
 
-    
+
 
     def update(self):
         # makes piece move down
+        #double frame count, and divide by odd and even to allow for movement, or rotation.
         if self.frames % 30 == 1:
             self.piece.position -= 10
             for i in range(0,210):
@@ -126,6 +121,10 @@ class Board():# create a large grid as the board
             y += 1
   
     def transpose_piece_to_board(self):
+        for i in range(0,self.piece.position): # the base of the board is regular tiles
+            if self.coord_plane[i].status == 1:    
+                self.coord_plane[i].set_block(0)
+                self.coord_plane[i].set_status(0)
         x = 0
         y = 0
         board_index = self.piece.position
