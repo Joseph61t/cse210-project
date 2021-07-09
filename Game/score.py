@@ -1,5 +1,4 @@
-from game.board import Board
-
+import arcade
 
 class Score():
 
@@ -8,4 +7,14 @@ class Score():
         self.score = 0
 
     def update(self):
-        print("Hello world")
+        
+        self.score += 1
+    
+    def draw(self):
+
+        score = "Score: " + str(self.score)
+
+        arcade.draw_text(score, 600, 600, arcade.color.WHITE, 15, font_name="GARA")
+
+
+
