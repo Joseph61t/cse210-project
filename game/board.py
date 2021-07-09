@@ -64,6 +64,22 @@ class Board():# create a large grid as the board
                     
         else:
             self.frames += 1
+        
+        
+        lines_to_delete = []
+        for i in range(1,21):
+            line_counter = 0
+            for j in range(0,10):
+                if self.coord_plane[(i*10) + j].get_block() != 0 and self.coord_plane[(i*10) + j].get_status() == 0:
+                    line_counter += 1
+            if line_counter == 10:
+                lines_to_delete.append(i)
+        if len(lines_to_delete) > 0:
+            for line in lines_to_delete:
+                for j in range(0,10):
+                    self.coord_plane[(line * 10) + j].set_block(0)
+                    self.coord_plane[(line * 10) + j].set_status(0)
+
 
 
     def move_down_faster(self):
