@@ -11,6 +11,8 @@ class Board():# create a large grid as the board
         self.load_piece()
         self.description = "board"
         self.piece = Piece()
+        self.block_left = False
+        self.block_right = False
 
 
 
@@ -81,7 +83,17 @@ class Board():# create a large grid as the board
                 for j in range(0,10):
                     self.coord_plane[(line * 10) + j].set_block(0)
                     self.coord_plane[(line * 10) + j].set_status(0)
-
+            for i in range(1,21):
+                for j in range(0,10):
+                    if self.coord_plane[(i*10) + j].get_block() != 0 and self.coord_plane[(i*10) + j].get_status() == 0:
+                        # blocks_to_move.append(((i * 10) + j))
+                        self.coord_plane[(i * 10) + j].set_block(0)
+                        self.coord_plane[(i * 10) + j].set_status(0)
+                        self.coord_plane[((i * 10) - 10) + j].set_block(1)
+                        self.coord_plane[((i * 10)- 10) + j].set_status(0)
+        # if len(blocks_to_move) > 0:
+        #     for block in blocks_to_move:
+                
 
 
     def move_down_faster(self):
@@ -95,20 +107,33 @@ class Board():# create a large grid as the board
 
 
     def update_left(self):
-        if self.piece.position % 10 != 2:
-            self.piece.position -= 1
+        
+        for i in range(1,21):
+            if self.coord_plane[i*10].get_status() == 1:
+                self.block_left = True
+            # if self.piece.position % 10 != 0:
+        if self.block_left == False:
+            self.piece.position += 1
             for i in range(0,210):
                 if self.coord_plane[i].get_status() == 1 and self.coord_plane[i].get_left() == 1:
                     self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
                     self.coord_plane[i-1].set_status(1)
                     self.coord_plane[i].set_block(0)
                     self.coord_plane[i].set_status(0)
+        self.block_left = False
+                
 
     def update_right(self):
-        if self.piece.position % 10 != 9:
+        # if self.piece.position % 10 != 0:
+        
+        for i in range(1,21):
+            if self.coord_plane[(i*10) + 9].get_status() == 1:
+                self.block_right = True
+            # if self.piece.position % 10 != 0:
+        if self.block_right == False:
             list_of_alive = []
             index = 200
-            self.piece.position += 1
+            self.piece.position -= 1
             while index > 0:
                 if self.coord_plane[index].get_status() == 1 and self.coord_plane[index].get_right() == 1:
                     list_of_alive.append(index+1)
@@ -118,6 +143,7 @@ class Board():# create a large grid as the board
             for item in list_of_alive:
                 self.coord_plane[item].set_block(1)
                 self.coord_plane[item].set_status(1)
+        self.block_right = False
     
     def load_piece(self):
         self.piece = Piece()

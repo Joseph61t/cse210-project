@@ -29,18 +29,18 @@ class HandleCollisionsAction(Action):
         """
         board = cast["board"][0]
         
-        for i in range(0, 210):
-            position = board.coord_plane[i]._get_position()
-            if position[0] > 380 and board.coord_plane[i].get_status() == 1:
+        # for i in range(0, 210):
+        #     position = board.coord_plane[i]._get_position()
+        #     if position[0] > 380 and board.coord_plane[i].get_status() == 1:
 
-                for k in range(0, 210):
-                    board.coord_plane[k].set_right(0)
+        #         for k in range(0, 210):
+        #             board.coord_plane[k].set_right(0)
 
 
-            if position[0] <= 100 and board.coord_plane[i].get_status() == 1:
+        #     if position[0] <= 100 and board.coord_plane[i].get_status() == 1:
 
-                for z in range(0, 210):
-                    board.coord_plane[z].set_left(0)
+        #         for z in range(0, 210):
+        #             board.coord_plane[z].set_left(0)
 
         # position= block._get_position()
         # if position[1] < 20:
