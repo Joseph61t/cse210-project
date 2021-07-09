@@ -1,7 +1,6 @@
 from game.tile import Tile
 from game.block import Block
 from game.piece import Piece
-from game.score import Score
 import arcade
 
 class Board():# create a large grid as the board
