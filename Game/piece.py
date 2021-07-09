@@ -5,7 +5,7 @@ class Piece():
             self.piece = {}
             self.rotation = 0
             self.velocity = (0,0)
-            self.position = 166
+            self.position = 186
 
             self.pieces = [
                   # 'I' 
