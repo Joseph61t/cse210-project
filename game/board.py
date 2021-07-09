@@ -8,11 +8,14 @@ class Board():# create a large grid as the board
     def __init__(self):
         self.coord_plane = self.create_board()
         self.frames = 0
-        self.load_piece()
         self.description = "board"
         self.piece = Piece()
         self.block_left = False
         self.block_right = False
+
+
+        self.piece = None
+        self.load_piece()
 
 
 
@@ -167,14 +170,14 @@ class Board():# create a large grid as the board
             y += 1
   
     def transpose_piece_to_board(self):
-        for i in range(0,self.piece.position): # the base of the board is regular tiles
-            if self.coord_plane[i].status == 1:    
-                self.coord_plane[i].set_block(0)
-                self.coord_plane[i].set_status(0)
         x = 0
         y = 0
         board_index = self.piece.position
         piece_index = 0
+        for i in range(0,board_index):
+            if self.coord_plane[i].status == 1:    
+                self.coord_plane[i].set_block(0)
+                self.coord_plane[i].set_status(0)
         piece_grid = self.piece.get_piece() # this is to get the proper rotation
         while y < 4:
             x = 0
