@@ -48,9 +48,13 @@ class Board():# create a large grid as the board
 
     def update(self):
         # makes piece move down
+<<<<<<< Updated upstream
         #double frame count, and divide by odd and even to allow for movement, or rotation.
         if self.frames % 30 == 1:
             self.piece.position -= 10
+=======
+        if self.frames % 80 == 79:
+>>>>>>> Stashed changes
             for i in range(0,210):
                 if self.coord_plane[i].status == 1:
                     # self.transpose_piece_to_board()
