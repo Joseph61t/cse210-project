@@ -163,19 +163,28 @@ class Piece():
       def set_piece(self):
             self.piece = random.choice(self.pieces)
 
-      def rotate_right(self):
-            if self.rotation < 3:
-                  self.rotation += 1
-            else:
-                  self.rotation = 0
+      def rotate_right(self, coord_plane):
+            can_rotate = self.can_rotate(coord_plane)
+            if can_rotate == True:
+                  if self.rotation < 3:
+                        self.rotation += 1
+                  else:
+                        self.rotation = 0
 
-      def rotate_left(self):
-            if self.rotation > 0:
-                  self.rotation -= 1
-            else:
-                  self.rotation = 3
+      def rotate_left(self, coord_plane):
+            can_rotate = self.can_rotate(coord_plane)
+            if can_rotate == True:
+                  if self.rotation > 0:
+                        self.rotation -= 1
+                  else:
+                        self.rotation = 3
 
-
+      def can_rotate(self, coord_plane):
+            can_rotate = True
+            for i in range(1,21):
+                  if coord_plane[i*10].get_status() == 1 or coord_plane[(i*10) + 9].get_status() == 1:
+                        can_rotate = False
+            return can_rotate
 
       def get_piece(self):
             return self.piece[self.rotation]

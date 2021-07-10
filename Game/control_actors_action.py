@@ -38,8 +38,8 @@ class ControlActorsAction(Action):
         elif direction[1] == -3:
             board.move_down_faster()
         elif self._input_service.should_rotate_left():
-            board.piece.rotate_left()
+            board.piece.rotate_left(board.coord_plane)
             board.transpose_piece_to_board()
         elif self._input_service.should_rotate_right():
-            board.piece.rotate_right()
+            board.piece.rotate_right(board.coord_plane)
             board.transpose_piece_to_board()

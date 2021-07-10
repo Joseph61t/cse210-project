@@ -121,7 +121,7 @@ class Board():# create a large grid as the board
                 self.block_left = True
             # if self.piece.position % 10 != 0:
         if self.block_left == False:
-            self.piece.position += 1
+            self.piece.position -= 1
             for i in range(0,210):
                 if self.coord_plane[i].get_status() == 1 and self.coord_plane[i].get_left() == 1:
                     self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
@@ -141,7 +141,7 @@ class Board():# create a large grid as the board
         if self.block_right == False:
             list_of_alive = []
             index = 200
-            self.piece.position -= 1
+            self.piece.position += 1
             while index > 0:
                 if self.coord_plane[index].get_status() == 1 and self.coord_plane[index].get_right() == 1:
                     list_of_alive.append(index+1)
@@ -179,7 +179,7 @@ class Board():# create a large grid as the board
         y = 0
         board_index = self.piece.position
         piece_index = 0
-        for i in range(0,board_index):
+        for i in range(0,210):
             if self.coord_plane[i].status == 1:    
                 self.coord_plane[i].set_block(0)
                 self.coord_plane[i].set_status(0)
@@ -188,7 +188,7 @@ class Board():# create a large grid as the board
             x = 0
             while x < 4:
                 if piece_grid[piece_index] != 0: # if in the piece grid the certain index is empty or not
-                    print(board_index)
+                    # print(board_index)
                     self.coord_plane[board_index].set_block(piece_grid[piece_index]) # sets the tile value to the value from the piece (1-6)
                     self.coord_plane[board_index].set_status(1) 
                 board_index -= 1
