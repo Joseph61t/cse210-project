@@ -181,21 +181,28 @@ class Piece():
 
       def can_rotate(self, coord_plane):
             can_rotate = True
+            is_l = self.is_l()
             for i in range(1,21):
-                  if coord_plane[i*10].get_status() == 1 or coord_plane[(i*10) + 9].get_status() == 1:
-                        can_rotate = False
+                  if is_l == False:
+                        if coord_plane[i*10].get_status() == 1 or coord_plane[(i*10) + 9].get_status() == 1:
+                              can_rotate = False
+                  else:
+                        if coord_plane[i*10].get_status() == 1: 
+                              can_rotate = False
+                        elif coord_plane[(i*10) + 9].get_status() == 1:
+                              can_rotate = False
+                        elif coord_plane[(i*10) + 1].get_status() == 1:
+                              can_rotate = False
+                        elif coord_plane[(i*10) + 8].get_status() == 1:
+                              can_rotate = False
             return can_rotate
+
+      def is_l(self):
+            is_l = False
+            for i in self.piece[self.rotation]:
+                  if i == 1:
+                        is_l = True
+            return is_l
 
       def get_piece(self):
             return self.piece[self.rotation]
-
-      
-                  
-
-      
-# piece = Piece()
-# print(piece.piece)
-# piece.set_rotation('@')
-# print(piece.piece[piece.rotation])
-# piece.set_rotation('#')
-# print(piece.piece[piece.rotation])
