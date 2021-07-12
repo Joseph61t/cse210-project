@@ -159,7 +159,7 @@ class Board():# create a large grid as the board
         piece_index = 0
         piece_grid = self.piece.get_piece() # this is to get the proper rotation
         for i in range(170, 190):
-            if self.coord_plane[i].get_status() == 0 and self.coord_plane[i].get_block() ==1:
+            if self.coord_plane[i].get_status() == 0 and self.coord_plane[i].get_block() == 1:
                 self.end_game = True
                 
             
