@@ -12,10 +12,7 @@ class Board():# create a large grid as the board
         self.block_left = False
         self.block_right = False
         self.score = Score()
-
-
-
-
+        self.end_game = False
         self.piece = None
         self.load_piece()
 
@@ -164,6 +161,11 @@ class Board():# create a large grid as the board
         board_index = self.piece.position
         piece_index = 0
         piece_grid = self.piece.get_piece() # this is to get the proper rotation
+        for i in range(170, 190):
+            if self.coord_plane[i].get_status() == 0 and self.coord_plane[i].get_block() ==1:
+                self.end_game = True
+                
+            
 
         while y < 4:
             x = 0
@@ -203,6 +205,13 @@ class Board():# create a large grid as the board
   
     def set_color(self, tile):
         tile.texture = arcade.load_texture(f"game/blocks/background.png")
+
+    
+            
+
+        
+
+
         
         
           
