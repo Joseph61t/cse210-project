@@ -111,6 +111,8 @@ class Board():# create a large grid as the board
                 self.coord_plane[i-10].set_status(1)
                 self.coord_plane[i].set_block(0)
                 self.coord_plane[i].set_status(0)
+                self.piece.postion -= 10
+
 
 
 
