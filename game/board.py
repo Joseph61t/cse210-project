@@ -46,6 +46,10 @@ class Board():# create a large grid as the board
             if tile.get_block() != 0:
                 tile.set_block(1)
                 tile.draw()
+            elif self.end_game == True:
+                tile.set_block(0)
+                tile.draw()
+                self.score.draw_end()
 
         self.score.draw()
         
@@ -160,6 +164,7 @@ class Board():# create a large grid as the board
         piece_grid = self.piece.get_piece() # this is to get the proper rotation
         for i in range(170, 190):
             if self.coord_plane[i].get_status() == 0 and self.coord_plane[i].get_block() == 1:
+
                 self.end_game = True
                 
             

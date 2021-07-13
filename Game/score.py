@@ -16,5 +16,13 @@ class Score():
 
         arcade.draw_text(score, 600, 600, arcade.color.WHITE, 15, font_name="GARA")
 
+    def draw_end(self):
+
+        game_over = "GAME OVER"
+
+        arcade.draw_text(game_over, 500, 500, arcade.color.WHITE, 20, font_name="GARA" )
+
+        
+
 
 
