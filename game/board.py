@@ -46,6 +46,10 @@ class Board():# create a large grid as the board
             if tile.get_block() != 0:
                 tile.set_block(1)
                 tile.draw()
+            elif self.end_game == True:
+                tile.set_block(0)
+                tile.draw()
+                self.score.draw_end()
 
         self.score.draw()
         
