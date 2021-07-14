@@ -34,7 +34,7 @@ class Board():# create a large grid as the board
         for i in range(0,10): # the base of the board is regular tiles
             board[i].set_block(1)
             board[i].set_status(0)
-            self.set_color(board[i])
+            board[i].set_color()
 
         
 
@@ -44,6 +44,15 @@ class Board():# create a large grid as the board
         return self.coord_plane
 
     def draw(self):
+        if self.end_game == True:
+            # make the "T"
+            for i in range(0, 10):
+                self.coord_plane[170 + i].set_color("Yellow")
+                self.coord_plane[160 + i].set_color("Yellow")
+            for i in range(3, 16):
+                self.coord_plane[(i*10) + 4].set_color("Yellow")
+                self.coord_plane[(i*10) + 5].set_color("Yellow")
+
         for tile in self.coord_plane:
             if tile.get_block() != 0:
                 tile.set_block(1)
@@ -52,6 +61,7 @@ class Board():# create a large grid as the board
                 tile.set_block(0)
                 tile.draw()
                 self.score.draw_end()
+                
 
         self.score.draw()
         self.score.t()
@@ -152,7 +162,7 @@ class Board():# create a large grid as the board
             # if self.piece.position % 10 != 0:
         if self.block_right == False:
             list_of_alive = []
-            index = 200
+            index = 209
             self.piece.position += 1
             while index > 0:
                 if self.coord_plane[index].get_status() == 1 and self.coord_plane[index].get_right() == 1:
@@ -173,7 +183,7 @@ class Board():# create a large grid as the board
         board_index = self.piece.position
         piece_index = 0
         piece_grid = self.piece.get_piece() # this is to get the proper rotation
-        for i in range(170, 190):
+        for i in range(190, 210):
             if self.coord_plane[i].get_status() == 0 and self.coord_plane[i].get_block() == 1:
                 self.end_game = True
                 
@@ -214,9 +224,6 @@ class Board():# create a large grid as the board
             board_index -= 6 # to skip to the next line
             y += 1
   
-  
-    def set_color(self, tile):
-        tile.texture = arcade.load_texture(f"game/blocks/background.png")
 
     
             

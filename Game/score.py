@@ -7,8 +7,7 @@ class Score():
         self.score = 0
 
     def update(self):
-        
-        self.score += 1
+        self.score += 10
 
     def t(self):
         
@@ -29,7 +28,8 @@ class Score():
     def s(self):
         s = "S"
         arcade.draw_text(s, 150 , 660 , arcade.color.WHITE, 30, font_name = "GARA")
-    
+
+
     def draw(self):
 
         score = "Score: " + str(self.score)

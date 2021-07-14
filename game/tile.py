@@ -34,5 +34,8 @@ class Tile(arcade.Sprite):
 
     def get_right(self):
         return self.canRight
+
+    def set_color(self, color="background"):
+        self.texture = arcade.load_texture(f"game/blocks/{color}-block.png")
     
 
