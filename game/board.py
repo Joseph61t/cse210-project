@@ -23,7 +23,7 @@ class Board():# create a large grid as the board
         for i in range(0,21):
             for j in range(0,10):
                  #size of block is 40px wide and starting spot is at 70 (50px border, 20px radius)
-                position = ((100+(j*35)),(100+(i*35)))
+                position = ((200+(j*25)),(200+(i*25)))
                 tile = Tile()
                 tile._set_position(position)
                 board.append(tile)
