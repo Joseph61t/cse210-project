@@ -15,6 +15,7 @@ class Board():# create a large grid as the board
         self.end_game = False
         self.piece = None
         self.load_piece()
+        
 
 
 
@@ -27,6 +28,7 @@ class Board():# create a large grid as the board
                 tile = Tile()
                 tile._set_position(position)
                 board.append(tile)
+        
 
         
         for i in range(0,10): # the base of the board is regular tiles
@@ -52,7 +54,13 @@ class Board():# create a large grid as the board
                 self.score.draw_end()
 
         self.score.draw()
-        
+        self.score.t()
+        self.score.e()
+        self.score.tt()
+        self.score.r()
+        self.score.i()
+        self.score.s()
+
 
 
 
