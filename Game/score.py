@@ -20,7 +20,7 @@ class Score():
 
         game_over = "GAME OVER"
 
-        arcade.draw_text(game_over, 500, 500, arcade.color.WHITE, 20, font_name="GARA" )
+        arcade.draw_text(game_over, 500, 500, arcade.color.RED, 20, font_name="GARA" )
 
         
 
