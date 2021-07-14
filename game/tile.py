@@ -4,7 +4,7 @@ class Tile(arcade.Sprite):
     def __init__(self, x=0, y=0, block_type =0, color="game/blocks/blue-block.png"):
 
         super().__init__(color)
-        self._set_scale(.07)
+        self._set_scale(.05)
         self.block_type = block_type
         self._set_position((x,y))
         self.status = 0 
