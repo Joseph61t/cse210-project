@@ -46,7 +46,7 @@ class Board():# create a large grid as the board
             if tile.get_block() != 0:
                 tile.set_block(1)
                 tile.draw()
-            elif self.end_game == True:
+            elif self.end_game == True: # when game ends this will draw a block in every tile and print game over
                 tile.set_block(0)
                 tile.draw()
                 self.score.draw_end()
