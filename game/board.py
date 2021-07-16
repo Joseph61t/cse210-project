@@ -9,10 +9,11 @@ class Board():# create a large grid as the board
         self.coord_plane = self.create_board()
         self.frames = 0
         self.description = "board"
-        self.block_left = False
-        self.block_right = False
+        self.left_edge = False
+        self.right_edge = False
         self.score = Score()
         self.end_game = False
+        self.fill_screen = 10
         self.piece = None
         self.load_piece()
         
@@ -57,11 +58,13 @@ class Board():# create a large grid as the board
             if tile.get_block() != 0:
                 tile.set_block(1)
                 tile.draw()
-            elif self.end_game == True: # when game ends this will draw a block in every tile and print game over
-                tile.set_block(0)
-                tile.draw()
+        if self.end_game == True: # when game ends this will draw a block in every tile and print game over
+            for i in range(0, self.fill_screen):
+                self.coord_plane[i].set_block(0)
+                self.coord_plane[i].draw()
                 self.score.draw_end()
-                
+            if self.fill_screen < 210:
+                self.fill_screen += 10
 
         self.score.draw()
         self.score.t()
@@ -78,11 +81,10 @@ class Board():# create a large grid as the board
         # makes piece move down
 
         #double frame count, and divide by odd and even to allow for movement, or rotation.
-        if self.frames % 80 == 79:
+            
+
+        if self.frames % 40 == 39:
             self.piece.position -= 10
-
-        if self.frames % 80 == 79:
-
             for i in range(0,210):
                 if self.coord_plane[i].status == 1:
                     # self.transpose_piece_to_board()
@@ -93,7 +95,11 @@ class Board():# create a large grid as the board
             self.frames += 1 
                     
         else:
-            self.frames += 1
+            if self.frames < 40: # Keep things from going infintely else we might make a number too big one day
+                self.frames += 1
+            else:
+                self.frames = 0
+                
         
         
         lines_to_delete = []
@@ -106,7 +112,7 @@ class Board():# create a large grid as the board
                 lines_to_delete.append(i)
         if len(lines_to_delete) > 0:
             for line in lines_to_delete:
-                self.score.update()
+                self.score.line_clear()
                 for j in range(0,10):
                     self.coord_plane[(line * 10) + j].set_block(0)
                     self.coord_plane[(line * 10) + j].set_status(0)
@@ -140,17 +146,20 @@ class Board():# create a large grid as the board
         
         for i in range(1,21):
             if self.coord_plane[i*10].get_status() == 1:
-                self.block_left = True
+                self.left_edge = True
             # if self.piece.position % 10 != 0:
-        if self.block_left == False:
+        if self.left_edge == False:
             self.piece.position -= 1
             for i in range(0,210):
                 if self.coord_plane[i].get_status() == 1 and self.coord_plane[i].get_left() == 1:
+                    if i > 10:
+                        if self.coord_plane[i-1].get_status() == 0 and self.coord_plane[i-1].get_block() == 1:
+                            self.score.ate_block()
                     self.coord_plane[i-1].set_block(self.coord_plane[i].get_block())
                     self.coord_plane[i-1].set_status(1)
                     self.coord_plane[i].set_block(0)
                     self.coord_plane[i].set_status(0)
-        self.block_left = False
+        self.left_edge = False
                 
 
     def update_right(self):
@@ -158,14 +167,17 @@ class Board():# create a large grid as the board
         
         for i in range(1,21):
             if self.coord_plane[(i*10) + 9].get_status() == 1:
-                self.block_right = True
+                self.right_edge = True
             # if self.piece.position % 10 != 0:
-        if self.block_right == False:
+        if self.right_edge == False:
             list_of_alive = []
             index = 209
             self.piece.position += 1
             while index > 0:
                 if self.coord_plane[index].get_status() == 1 and self.coord_plane[index].get_right() == 1:
+                    if index < 209 and index > 8:
+                        if self.coord_plane[index+1].get_status() == 0 and self.coord_plane[index+1].get_block() == 1:
+                            self.score.ate_block()
                     list_of_alive.append(index+1)
                     self.coord_plane[index].set_block(0)
                     self.coord_plane[index].set_status(0)
@@ -173,7 +185,7 @@ class Board():# create a large grid as the board
             for item in list_of_alive:
                 self.coord_plane[item].set_block(1)
                 self.coord_plane[item].set_status(1)
-        self.block_right = False
+        self.right_edge = False
     
     def load_piece(self):
         self.piece = Piece()

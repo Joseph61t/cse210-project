@@ -6,8 +6,14 @@ class Score():
 
         self.score = 0
 
-    def update(self):
+    def ate_block(self):
+        self.score += 1
+
+    def block_placed(self):
         self.score += 10
+
+    def line_clear(self):
+        self.score += 100
 
     def t(self):
         
@@ -39,9 +45,9 @@ class Score():
     def draw_end(self):
 
         game_over = "GAME OVER"
-
         arcade.draw_text(game_over, 500, 500, arcade.color.RED, 20, font_name="GARA" )
-
+        thanks_for_playing = "Thanks for Playing!"
+        arcade.draw_text(thanks_for_playing, 500, 450, arcade.color.WHITE, 15, font_name="GARA")
         
 
 
