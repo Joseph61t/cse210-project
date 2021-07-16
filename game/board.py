@@ -3,6 +3,7 @@ from game.block import Block
 from game.piece import Piece
 from game.score import Score
 import arcade
+import time
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -65,6 +66,7 @@ class Board():# create a large grid as the board
                 self.score.draw_end()
             if self.fill_screen < 210:
                 self.fill_screen += 10
+            time.sleep(.0025)
 
         self.score.draw()
         self.score.t()
