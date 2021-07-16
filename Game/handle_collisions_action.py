@@ -54,6 +54,8 @@ class HandleCollisionsAction(Action):
         if self.crash(board.get_board()):
             for Q in range(0,210):
                         board.coord_plane[Q].set_status(0)
-            board.load_piece()
+            if not board.end_game: 
+                board.load_piece()
+            board.score.block_placed()
 
 
