@@ -4,6 +4,7 @@ from game.piece import Piece
 from game.score import Score
 import arcade
 import time
+import random
 
 class Board():# create a large grid as the board
     def __init__(self):
@@ -48,12 +49,13 @@ class Board():# create a large grid as the board
     def draw(self):
         if self.end_game == True:
             # make the "T"
+            colors = ["RED","YELLOW","GREEN","PINK","PURPLE"]
             for i in range(0, 10):
-                self.coord_plane[170 + i].set_color("Yellow")
-                self.coord_plane[160 + i].set_color("Yellow")
+                self.coord_plane[170 + i].set_color(random.choice(colors))
+                self.coord_plane[160 + i].set_color(random.choice(colors))
             for i in range(3, 16):
-                self.coord_plane[(i*10) + 4].set_color("Yellow")
-                self.coord_plane[(i*10) + 5].set_color("Yellow")
+                self.coord_plane[(i*10) + 4].set_color(random.choice(colors))
+                self.coord_plane[(i*10) + 5].set_color(random.choice(colors))
 
         for tile in self.coord_plane:
             if tile.get_block() != 0:
