@@ -18,6 +18,7 @@ class Board():# create a large grid as the board
         self.fill_screen = 10
         self.piece = None
         self.load_piece()
+        self.background_music = arcade.Sound("") 
         
 
 
