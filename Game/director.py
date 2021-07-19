@@ -22,13 +22,14 @@ class Director(arcade.Window):
         """Initialize the game
         """
         super().__init__(constants.MAX_X, constants.MAX_Y, "Glitchy Tetris")
-
+        self.background_music = arcade.Sound("game/sounds/4-min-sound.wav")
         self._cast = cast
         self._script = script
         self._input_service = input_service
 
     def setup(self):
         arcade.set_background_color(arcade.color.BLACK)
+        self.background_music.play(1,0, True)
 
     def on_update(self, delta_time):
         self._cue_action("update")
