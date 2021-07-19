@@ -69,7 +69,7 @@ class Board():# create a large grid as the board
                 self.score.draw_end()
             if self.fill_screen < 210:
                 self.fill_screen += 10
-            time.sleep(.0025)
+            time.sleep(.00025)
 
         self.score.draw()
         self.score.t()
