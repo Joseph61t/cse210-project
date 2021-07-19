@@ -18,6 +18,7 @@ class Board():# create a large grid as the board
         self.fill_screen = 10
         self.piece = None
         self.load_piece()
+        self.background_music = arcade.Sound("game/sounds/4-min-sound.wav") 
         
 
 
@@ -40,7 +41,7 @@ class Board():# create a large grid as the board
             board[i].set_color()
 
         
-
+        self.background_music.play()
         return board
 
     def get_board(self):
